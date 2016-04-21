@@ -6,7 +6,8 @@
 
 var Dataviz = require("../dataviz"),
     each = require("../../core/utils/each"),
-    extend = require("../../core/utils/extend");
+    extend = require("../../core/utils/extend"),
+    moment = require("moment");
 
 module.exports = function(){
 
@@ -66,8 +67,13 @@ module.exports = function(){
 
     labels = this.dataset.selectColumn(0).slice(1);
     each(labels, function(l,i){
-      if (l instanceof Date) {
-        result.labels.push((l.getMonth()+1) + "-" + l.getDate() + "-" + l.getFullYear());
+      if(i % 2 !== 0) {
+        result.labels.push('');
+      } else if(moment && moment(l)) {
+        var date = moment(l);
+        result.labels.push(date.startOf('day').format('DD.MM'))
+      } else if (l instanceof Date) {
+        result.labels.push((l.getDate() + '.' + l.getMonth()+1));
       } else {
         result.labels.push(l);
       }
