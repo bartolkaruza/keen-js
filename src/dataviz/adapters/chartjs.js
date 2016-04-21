@@ -6,7 +6,8 @@
 
 var Dataviz = require("../dataviz"),
     each = require("../../core/utils/each"),
-    extend = require("../../core/utils/extend");
+    extend = require("../../core/utils/extend"),
+    moment = require("moment");
 
 module.exports = function(){
 
