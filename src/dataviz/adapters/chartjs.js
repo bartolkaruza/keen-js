@@ -67,7 +67,7 @@ module.exports = function(){
     labels = this.dataset.selectColumn(0).slice(1);
     each(labels, function(l,i){
       if (l instanceof Date) {
-        result.labels.push((l.getMonth()+1) + "-" + l.getDate() + "-" + l.getFullYear());
+        result.labels.push((l.getDate() + '.' + l.getMonth()+1));
       } else {
         result.labels.push(l);
       }
